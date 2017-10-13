@@ -182,7 +182,7 @@ struct halide_c_type_to_name {
 
 //typedef long long int test_t;
 
-HALIDE_DECLARE_EXTERN_CLASS_TYPE(test_int);
+//HALIDE_DECLARE_EXTERN_CLASS_TYPE(test_int);
 //HALIDE_DECLARE_EXTERN_SIMPLE_TYPE(uint_fast_8_t);
 HALIDE_DECLARE_EXTERN_SIMPLE_TYPE(bool);
 HALIDE_DECLARE_EXTERN_SIMPLE_TYPE(int8_t);

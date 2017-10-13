@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <ap_int.h>
+#include "../src/TestTypes.h"
 
 extern "C" {
 int64_t halide_current_time_ns(void *ctx);
@@ -113,7 +113,7 @@ public:
 #ifndef HALIDE_HALIDERUNTIME_H
 #define HALIDE_HALIDERUNTIME_H
 
-#include "../TestTypes.h"
+//#include "../TestTypes.h"
 
 #ifndef COMPILING_HALIDE_RUNTIME
 #include <stddef.h>
@@ -1985,7 +1985,7 @@ struct buffer_t;
 extern "C" {
 #endif
 
-ap_int<32> brighter(struct halide_buffer_t *);
+test_int brighter(struct halide_buffer_t *);
 
 static const uint8_t _input_data[] __attribute__ ((aligned (32))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -1999,61 +1999,61 @@ static halide_buffer_t _input_buffer_ = {0, nullptr, const_cast<uint8_t*>(&_inpu
 static halide_buffer_t * const _input_buffer = &_input_buffer_;
 int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  void * const _ucon = nullptr;
- ap_uint<64> _0 = (ap_uint<64>)(_input_buffer);
- ap_uint<64> _1 = (ap_uint<64>)(0);
+ test_int _0 = (test_int)(_input_buffer);
+ test_int _1 = (test_int)(0);
  bool _2 = _0 != _1;
  if (!_2)  {
-  ap_int<32> _3 = halide_error_buffer_argument_is_null(_ucon, "input");
+  test_int _3 = halide_error_buffer_argument_is_null(_ucon, "input");
   return _3;
  }
- ap_uint<64> _4 = (ap_uint<64>)(_brighter_buffer);
- ap_uint<64> _5 = (ap_uint<64>)(0);
+ test_int _4 = (test_int)(_brighter_buffer);
+ test_int _5 = (test_int)(0);
  bool _6 = _4 != _5;
  if (!_6)  {
-  ap_int<32> _7 = halide_error_buffer_argument_is_null(_ucon, "brighter");
+  test_int _7 = halide_error_buffer_argument_is_null(_ucon, "brighter");
   return _7;
  }
  void *_8 = _halide_buffer_get_host(_brighter_buffer);
  void * _brighter = _8;
- ap_uint<8> _9 = _halide_buffer_get_type_code(_brighter_buffer);
- ap_uint<8> _10 = _halide_buffer_get_type_bits(_brighter_buffer);
- ap_uint<16> _11 = _halide_buffer_get_type_lanes(_brighter_buffer);
- ap_int<32> _12 = _halide_buffer_get_min(_brighter_buffer, 0);
- ap_int<32> _13 = _halide_buffer_get_extent(_brighter_buffer, 0);
- ap_int<32> _14 = _halide_buffer_get_stride(_brighter_buffer, 0);
+ test_int _9 = _halide_buffer_get_type_code(_brighter_buffer);
+ test_int _10 = _halide_buffer_get_type_bits(_brighter_buffer);
+ test_int _11 = _halide_buffer_get_type_lanes(_brighter_buffer);
+ test_int _12 = _halide_buffer_get_min(_brighter_buffer, 0);
+ test_int _13 = _halide_buffer_get_extent(_brighter_buffer, 0);
+ test_int _14 = _halide_buffer_get_stride(_brighter_buffer, 0);
  void *_15 = _halide_buffer_get_host(_input_buffer);
  void * _input = _15;
- ap_uint<8> _16 = _halide_buffer_get_type_code(_input_buffer);
- ap_uint<8> _17 = _halide_buffer_get_type_bits(_input_buffer);
- ap_uint<16> _18 = _halide_buffer_get_type_lanes(_input_buffer);
- ap_int<32> _19 = _halide_buffer_get_min(_input_buffer, 0);
- ap_int<32> _20 = _halide_buffer_get_extent(_input_buffer, 0);
- ap_int<32> _21 = _halide_buffer_get_stride(_input_buffer, 0);
+ test_int _16 = _halide_buffer_get_type_code(_input_buffer);
+ test_int _17 = _halide_buffer_get_type_bits(_input_buffer);
+ test_int _18 = _halide_buffer_get_type_lanes(_input_buffer);
+ test_int _19 = _halide_buffer_get_min(_input_buffer, 0);
+ test_int _20 = _halide_buffer_get_extent(_input_buffer, 0);
+ test_int _21 = _halide_buffer_get_stride(_input_buffer, 0);
  bool _22 = _halide_buffer_is_bounds_query(_input_buffer);
  bool _23 = !(_22);
  bool _24 = 0 <= _12;
- ap_int<32> _25 = _12 + _13;
+ test_int _25 = _12 + _13;
  bool _26 = _25 <= 10;
  bool _27 = _24 && _26;
  bool _28 = _23 || _27;
  if (!_28)  {
-  ap_int<32> _29 = _12 + _13;
-  ap_int<32> _30 = _29 + -1;
-  ap_int<32> _31 = halide_error_constraints_make_required_region_smaller(_ucon, "Input buffer input", 0, 0, 9, _12, _30);
+  test_int _29 = _12 + _13;
+  test_int _30 = _29 + -1;
+  test_int _31 = halide_error_constraints_make_required_region_smaller(_ucon, "Input buffer input", 0, 0, 9, _12, _30);
   return _31;
  }
  bool _32 = _halide_buffer_is_bounds_query(_brighter_buffer);
  if (_32)
  {
   struct halide_dimension_t *_33 = _halide_buffer_get_shape(_brighter_buffer);
-  ap_uint<64> _34 = (ap_uint<64>)(0);
+  test_int _34 = (test_int)(0);
   void *_35 = (void *)(_34);
   struct halide_device_interface_t *_36 = (struct halide_device_interface_t *)(_34);
   struct {
-   const ap_int<32> f_0;
-   const ap_int<32> f_1;
-   const ap_int<32> f_2;
-   const ap_int<32> f_3;
+   const test_int f_0;
+   const test_int f_1;
+   const test_int f_2;
+   const test_int f_3;
   } s0 = {
    _12,
    _13,
@@ -2068,14 +2068,14 @@ int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  if (_39)
  {
   struct halide_dimension_t *_40 = _halide_buffer_get_shape(_input_buffer);
-  ap_uint<64> _41 = (ap_uint<64>)(0);
+  test_int _41 = (test_int)(0);
   void *_42 = (void *)(_41);
   struct halide_device_interface_t *_43 = (struct halide_device_interface_t *)(_41);
   struct {
-   const ap_int<32> f_0;
-   const ap_int<32> f_1;
-   const ap_int<32> f_2;
-   const ap_int<32> f_3;
+   const test_int f_0;
+   const test_int f_1;
+   const test_int f_2;
+   const test_int f_3;
   } s1 = {
    0,
    10,
@@ -2092,122 +2092,122 @@ int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  bool _49 = !(_48);
  if (_49)
  {
-  ap_uint<8> _50 = (ap_uint<8>)(0);
+  test_int _50 = (test_int)(0);
   bool _51 = _9 == _50;
-  ap_uint<8> _52 = (ap_uint<8>)(64);
+  test_int _52 = (test_int)(64);
   bool _53 = _10 == _52;
   bool _54 = _51 && _53;
-  ap_uint<16> _55 = (ap_uint<16>)(1);
+  test_int _55 = (test_int)(1);
   bool _56 = _11 == _55;
   bool _57 = _54 && _56;
   if (!_57)   {
-   ap_uint<8> _58 = (ap_uint<8>)(0);
-   ap_uint<8> _59 = (ap_uint<8>)(64);
-   ap_uint<16> _60 = (ap_uint<16>)(1);
-   ap_int<32> _61 = halide_error_bad_type(_ucon, "Output buffer brighter", _9, _58, _10, _59, _11, _60);
+   test_int _58 = (test_int)(0);
+   test_int _59 = (test_int)(64);
+   test_int _60 = (test_int)(1);
+   test_int _61 = halide_error_bad_type(_ucon, "Output buffer brighter", _9, _58, _10, _59, _11, _60);
    return _61;
   }
-  ap_uint<8> _62 = (ap_uint<8>)(0);
+  test_int _62 = (test_int)(0);
   bool _63 = _16 == _62;
-  ap_uint<8> _64 = (ap_uint<8>)(64);
+  test_int _64 = (test_int)(64);
   bool _65 = _17 == _64;
   bool _66 = _63 && _65;
-  ap_uint<16> _67 = (ap_uint<16>)(1);
+  test_int _67 = (test_int)(1);
   bool _68 = _18 == _67;
   bool _69 = _66 && _68;
   if (!_69)   {
-   ap_uint<8> _70 = (ap_uint<8>)(0);
-   ap_uint<8> _71 = (ap_uint<8>)(64);
-   ap_uint<16> _72 = (ap_uint<16>)(1);
-   ap_int<32> _73 = halide_error_bad_type(_ucon, "Input buffer input", _16, _70, _17, _71, _18, _72);
+   test_int _70 = (test_int)(0);
+   test_int _71 = (test_int)(64);
+   test_int _72 = (test_int)(1);
+   test_int _73 = halide_error_bad_type(_ucon, "Input buffer input", _16, _70, _17, _71, _18, _72);
    return _73;
   }
   bool _74 = 0 <= _13;
   if (!_74)   {
-   ap_int<32> _75 = halide_error_buffer_extents_negative(_ucon, "Output buffer brighter", 0, _13);
+   test_int _75 = halide_error_buffer_extents_negative(_ucon, "Output buffer brighter", 0, _13);
    return _75;
   }
   bool _76 = _19 <= _12;
-  ap_int<32> _77 = _12 + _13;
-  ap_int<32> _78 = _77 - _20;
+  test_int _77 = _12 + _13;
+  test_int _78 = _77 - _20;
   bool _79 = _78 <= _19;
   bool _80 = _76 && _79;
   if (!_80)   {
-   ap_int<32> _81 = _12 + _13;
-   ap_int<32> _82 = _81 + -1;
-   ap_int<32> _83 = _19 + _20;
-   ap_int<32> _84 = _83 + -1;
-   ap_int<32> _85 = halide_error_access_out_of_bounds(_ucon, "Input buffer input", 0, _12, _82, _19, _84);
+   test_int _81 = _12 + _13;
+   test_int _82 = _81 + -1;
+   test_int _83 = _19 + _20;
+   test_int _84 = _83 + -1;
+   test_int _85 = halide_error_access_out_of_bounds(_ucon, "Input buffer input", 0, _12, _82, _19, _84);
    return _85;
   }
   bool _86 = 0 <= _20;
   if (!_86)   {
-   ap_int<32> _87 = halide_error_buffer_extents_negative(_ucon, "Input buffer input", 0, _20);
+   test_int _87 = halide_error_buffer_extents_negative(_ucon, "Input buffer input", 0, _20);
    return _87;
   }
   bool _88 = _14 == 1;
   if (!_88)   {
-   ap_int<32> _89 = halide_error_constraint_violated(_ucon, "brighter.stride.0", _14, "1", 1);
+   test_int _89 = halide_error_constraint_violated(_ucon, "brighter.stride.0", _14, "1", 1);
    return _89;
   }
   bool _90 = _21 == 1;
   if (!_90)   {
-   ap_int<32> _91 = halide_error_constraint_violated(_ucon, "input.stride.0", _21, "1", 1);
+   test_int _91 = halide_error_constraint_violated(_ucon, "input.stride.0", _21, "1", 1);
    return _91;
   }
   bool _92 = _19 == 0;
   if (!_92)   {
-   ap_int<32> _93 = halide_error_constraint_violated(_ucon, "input.min.0", _19, "0", 0);
+   test_int _93 = halide_error_constraint_violated(_ucon, "input.min.0", _19, "0", 0);
    return _93;
   }
   bool _94 = _20 == 10;
   if (!_94)   {
-   ap_int<32> _95 = halide_error_constraint_violated(_ucon, "input.extent.0", _20, "10", 10);
+   test_int _95 = halide_error_constraint_violated(_ucon, "input.extent.0", _20, "10", 10);
    return _95;
   }
-  ap_int<64> _96 = !!(ap_int<64>)(_13);
-  ap_int<64> _97 = (ap_int<64>)(0);
-  ap_int<64> _98 = _97 - _96;
+  test_int _96 = (test_int)(_13);
+  test_int _97 = (test_int)(0);
+  test_int _98 = _97 - _96;
   bool _99 = _96 > _97;
-  ap_int<64> _100 = (ap_int<64>)(_99 ? _96 : _98);
-  ap_uint<64> _101 = !!(ap_uint<64>)(_100);
-  ap_uint<64> _102 = _101;
-  ap_uint<64> _103 = (ap_uint<64>)(2147483647);
+  test_int _100 = (test_int)(_99 ? _96 : _98);
+  test_int _101 = (test_int)(_100);
+  test_int _102 = _101;
+  test_int _103 = (test_int)(2147483647);
   bool _104 = _102 <= _103;
   if (!_104)   {
-   ap_int<64> _105 = !!(ap_int<64>)(_13);
-   ap_int<64> _106 = (ap_int<64>)(0);
-   ap_int<64> _107 = _106 - _105;
+   test_int _105 = (test_int)(_13);
+   test_int _106 = (test_int)(0);
+   test_int _107 = _106 - _105;
    bool _108 = _105 > _106;
-   ap_int<64> _109 = (ap_int<64>)(_108 ? _105 : _107);
-   ap_uint<64> _110 = !!(ap_uint<64>)(_109);
-   ap_uint<64> _111 = _110;
-   ap_uint<64> _112 = (ap_uint<64>)(2147483647);
-   ap_int<32> _113 = halide_error_buffer_allocation_too_large(_ucon, "brighter", _111, _112);
+   test_int _109 = (test_int)(_108 ? _105 : _107);
+   test_int _110 = (test_int)(_109);
+   test_int _111 = _110;
+   test_int _112 = (test_int)(2147483647);
+   test_int _113 = halide_error_buffer_allocation_too_large(_ucon, "brighter", _111, _112);
    return _113;
   }
-  ap_uint<64> _114 = (ap_uint<64>)(0);
+  test_int _114 = (test_int)(0);
   void *_115 = (void *)(_114);
   bool _116 = _brighter != _115;
   if (!_116)   {
-   ap_int<32> _117 = halide_error_host_is_null(_ucon, "Output buffer brighter");
+   test_int _117 = halide_error_host_is_null(_ucon, "Output buffer brighter");
    return _117;
   }
-  ap_uint<64> _118 = (ap_uint<64>)(0);
+  test_int _118 = (test_int)(0);
   void *_119 = (void *)(_118);
   bool _120 = _input != _119;
   if (!_120)   {
-   ap_int<32> _121 = halide_error_host_is_null(_ucon, "Input buffer input");
+   test_int _121 = halide_error_host_is_null(_ucon, "Input buffer input");
    return _121;
   }
   // produce brighter
   for (int _brighter_s0_x = _12; _brighter_s0_x < _12 + _13; _brighter_s0_x++)
   {
-   ap_int<64> _122 = ((const ap_int<64> *)_input)[_brighter_s0_x];
-   ap_int<64> _123 = (ap_int<64>)(1);
-   ap_int<64> _124 = _122 + _123;
-   ap_int<32> _125 = _brighter_s0_x - _12;
-   ((ap_int<64> *)_brighter)[_125] = _124;
+   test_int _122 = ((const test_int *)_input)[_brighter_s0_x];
+   test_int _123 = (test_int)(1);
+   test_int _124 = _122 + _123;
+   test_int _125 = _brighter_s0_x - _12;
+   ((test_int *)_brighter)[_125] = _124;
   } // for _brighter_s0_x
  } // if _49
  return 0;
@@ -2215,10 +2215,10 @@ int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
 int brighter_old_buffer_t(struct buffer_t *_brighter) HALIDE_FUNCTION_ATTRS {
  void * const _ucon = nullptr;
  struct {
-  const ap_int<32> f_0;
-  const ap_int<32> f_1;
-  const ap_int<32> f_2;
-  const ap_int<32> f_3;
+  const test_int f_0;
+  const test_int f_1;
+  const test_int f_2;
+  const test_int f_3;
  } s2 = {
   0,
   0,
@@ -2229,17 +2229,17 @@ int brighter_old_buffer_t(struct buffer_t *_brighter) HALIDE_FUNCTION_ATTRS {
  struct halide_dimension_t * _t12 = _126;
  halide_buffer_t b0;
  struct halide_buffer_t *_127 = &b0;
- ap_uint<64> _128 = (ap_uint<64>)(0);
+ test_int _128 = (test_int)(0);
  void *_129 = (void *)(_128);
  struct halide_device_interface_t *_130 = (struct halide_device_interface_t *)(_128);
  struct halide_buffer_t *_131 = _halide_buffer_init(_127, _t12, _129, _128, _130, 0, 64, 1, _t12, _128);
  struct halide_buffer_t * _brighter_upgraded = _131;
- ap_int<32> _132 = halide_upgrade_buffer_t(_ucon, "brighter", _brighter, _brighter_upgraded);
+ test_int _132 = halide_upgrade_buffer_t(_ucon, "brighter", _brighter, _brighter_upgraded);
  bool _133 = _132 == 0;
  if (!_133)  {
   return _132;
  }
- ap_int<32> _134 = brighter(_brighter_upgraded);
+ test_int _134 = brighter(_brighter_upgraded);
  bool _135 = _134 == 0;
  if (!_135)  {
   return _134;
@@ -2247,7 +2247,7 @@ int brighter_old_buffer_t(struct buffer_t *_brighter) HALIDE_FUNCTION_ATTRS {
  bool _136 = _halide_buffer_is_bounds_query(_brighter_upgraded);
  if (_136)
  {
-  ap_int<32> _137 = halide_downgrade_buffer_t(_ucon, "brighter", _brighter_upgraded, _brighter);
+  test_int _137 = halide_downgrade_buffer_t(_ucon, "brighter", _brighter_upgraded, _brighter);
   bool _138 = _137 == 0;
   if (!_138)   {
    return _137;
@@ -2255,7 +2255,7 @@ int brighter_old_buffer_t(struct buffer_t *_brighter) HALIDE_FUNCTION_ATTRS {
  } // if _136
  else
  {
-  ap_int<32> _139 = halide_downgrade_buffer_t_device_fields(_ucon, "brighter", _brighter_upgraded, _brighter);
+  test_int _139 = halide_downgrade_buffer_t_device_fields(_ucon, "brighter", _brighter_upgraded, _brighter);
   bool _140 = _139 == 0;
   if (!_140)   {
    return _139;

@@ -1,7 +1,7 @@
 #ifndef HALIDE_HALIDERUNTIME_H
 #define HALIDE_HALIDERUNTIME_H
 
-#include "../TestTypes.h"
+//#include "../TestTypes.h"
 
 #ifndef COMPILING_HALIDE_RUNTIME
 #include <stddef.h>

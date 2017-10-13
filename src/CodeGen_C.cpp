@@ -41,7 +41,7 @@ const string headers =
     "#include <string.h>\n"
     "#include <stdio.h>\n"
     "#include <stdint.h>\n"
-    "#include <ap_int.h>\n";
+    "#include \"../src/TestTypes.h\"\n";
 
 // We now add definitions of things in the runtime which are
 // intended to be inlined into every module but are only expressed
@@ -387,15 +387,18 @@ string type_to_c_type(Type type, bool include_space, bool c_plus_plus = true) {
             }
             break;
         case 8: case 16: case 32: case 64:
-            if (type.is_uint()) {
-                oss << "ap_uint";
-            } else {
-                oss << "ap_int";
-            }
-            oss << "<" << type.bits() << ">";
-            if (type.is_vector()) {
-                oss << "x" << type.lanes();
-            }
+            //if (type.is_uint()) {
+            //    oss << "ap_uint";
+            //} else {
+            //    oss << "ap_int";
+            //}
+            //oss << "<" << type.bits() << ">";
+            //if (type.is_vector()) {
+            //    oss << "x" << type.lanes();
+            //}
+            if (type.is_uint() || type.is_int()){
+                oss << "test_int";
+            }	
             //oss << "_t";
             break;
         default:
