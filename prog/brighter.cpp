@@ -1997,7 +1997,7 @@ static const uint8_t _input_data[] __attribute__ ((aligned (32))) = {
 static const halide_dimension_t _input_buffer_shape[] = {halide_dimension_t(0, 10, 1)};
 static halide_buffer_t _input_buffer_ = {0, nullptr, const_cast<uint8_t*>(&_input_data[0]), 0, halide_type_t((halide_type_code_t)(0), 64, 1), 1, const_cast<halide_dimension_t*>(_input_buffer_shape)};
 static halide_buffer_t * const _input_buffer = &_input_buffer_;
-int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
+test_int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  void * const _ucon = nullptr;
  test_int _0 = (test_int)(_input_buffer);
  test_int _1 = (test_int)(0);
@@ -2212,7 +2212,7 @@ int brighter(struct halide_buffer_t *_brighter_buffer) HALIDE_FUNCTION_ATTRS {
  } // if _49
  return 0;
 }
-int brighter_old_buffer_t(struct buffer_t *_brighter) HALIDE_FUNCTION_ATTRS {
+test_int brighter_old_buffer_t(struct buffer_t *_brighter) HALIDE_FUNCTION_ATTRS {
  void * const _ucon = nullptr;
  struct {
   const test_int f_0;
