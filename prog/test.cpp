@@ -21,6 +21,7 @@ int main(int argc, char **argv) {
     //Halide::Buffer<test_int> output =
         //brighter.realize(10);
     brighter.compile_to_c("brighter.cpp", {}, "brighter");
+    brighter.compile_to_header("brighter.h", {}, "brighter");
 
     printf("Success!\n");
     return 0;

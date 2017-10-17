@@ -387,18 +387,19 @@ string type_to_c_type(Type type, bool include_space, bool c_plus_plus = true) {
             }
             break;
         case 8: case 16: case 32: case 64:
-            //if (type.is_uint()) {
-            //    oss << "ap_uint";
-            //} else {
-            //    oss << "ap_int";
-            //}
+	    oss << "test_int_t";
+            if (type.is_uint()) {
+                oss << "<uint" << type.bits() << "_t>"; 
+            } else {
+                oss << "<uint" << type.bits() << "_t>"; 
+            }
             //oss << "<" << type.bits() << ">";
             //if (type.is_vector()) {
             //    oss << "x" << type.lanes();
             //}
-            if (type.is_uint() || type.is_int()){
-                oss << "test_int";
-            }	
+            //if (type.is_uint() || type.is_int()){
+            //    oss << "test_int";
+            //}	
             //oss << "_t";
             break;
         default:
@@ -1518,7 +1519,7 @@ void CodeGen_C::compile(const LoweredFunc &f) {
         // If the function isn't public, mark it static.
         stream << "static ";
     }
-    stream << "test_int " << simple_name << "(";
+    stream << "test_int_t<uint32_t> " << simple_name << "(";
     for (size_t i = 0; i < args.size(); i++) {
         if (args[i].is_buffer()) {
             stream << "struct halide_buffer_t *"
